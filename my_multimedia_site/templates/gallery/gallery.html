@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="my-4">My Multimedia Gallery</h1>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% if items %}
+        {% for item in items %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    {% if item.image_file %}
+                        <img src="{{ item.image_file }}" class="card-img-top" alt="{{ item.title }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.title }}</h5>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-center">No media found. Go to the admin panel to upload something!</p>
+    {% endif %}
+    </div>
+{% endblock %}
